@@ -1,6 +1,6 @@
 // Import required packages
 const express = require('express');
-const stripe = require('stripe')('sk_test_51SC5QkC48JAKzKxd4VlFvJzCglYkwwHMcqto1f43aSdqNu6hvrf3gKjvCRzPGi8RZbg49o2JdV0YqbZqsjBr6RQu00ObNV5UKY'); // <-- IMPORTANT: Replace with your secret key
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY); // <-- IMPORTANT: Replace with your secret key
 
 const app = express();
 const port = 3000;
