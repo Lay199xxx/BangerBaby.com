@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://js.stripe.com/v3/"></script>
+</head>
+<body>
+    <div class="checkout-container">
+        <h1>Complete Your Purchase</h1>
+
+        <div id="order-summary">
+            <p>Loading your order details...</p>
+        </div>
+
+        <form id="payment-form">
+            <div id="payment-element">
+                </div>
+            <button id="submit" class="buy-button">
+                <span id="button-text">Pay now</span>
+            </button>
+            <div id="payment-message" role="alert"></div>
+        </form>
+    </div>
+
+    <script src="checkout.js"></script>
+</body>
+</html>
