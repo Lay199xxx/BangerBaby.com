@@ -84,3 +84,55 @@ header {
 .buy-button:hover {
     background-color: #737373;
 }
+/* --- Checkout Page Styles --- */
+.checkout-container {
+    max-width: 520px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #1e1e1e;
+    border-radius: 8px;
+}
+
+#order-summary {
+    margin-bottom: 20px;
+}
+
+.summary-card {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    background-color: #282828;
+    border-radius: 6px;
+}
+
+.summary-art {
+    width: 60px;
+    height: 60px;
+    border-radius: 4px;
+    margin-right: 15px;
+}
+
+.summary-info {
+    flex-grow: 1;
+}
+
+.summary-info h3, .summary-info p {
+    margin: 0;
+}
+
+.summary-price {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+#payment-form .buy-button {
+    margin-top: 20px;
+}
+
+#payment-message {
+    color: rgb(239, 89, 89);
+    font-size: 14px;
+    margin-top: 15px;
+    text-align: center;
+    display: none;
+}
