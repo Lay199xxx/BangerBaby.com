@@ -78,7 +78,7 @@ async function displayOrderSummary(beatId) {
     try {
         const response = await fetch('/api/beats');
         const beats = await response.json();
-        const beat = beats.find(b => b.id === beatId);
+        const beat = beats.find(b => b.id == beatId);
 
         if (beat) {
             const priceInDollars = (beat.price / 100).toFixed(2);

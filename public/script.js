@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', async () => {
     // IMPORTANT: Replace with your publishable key
-    const stripe = Stripe('pk_live_51SC5QaCLs3t3rxKpDlVEuweUTyUkX6aDlegz31itcoM8EqhYd57EIEHiUORBaa48vTvUtP7Dtc6wPSnwn2Gn2gV600kiy58f7h'); 
+    const stripe = Stripe('YOUR_STRIPE_PUBLISHABLE_KEY'); 
 
     const beatContainer = document.getElementById('beat-container');
     let currentAudio = null; // Keep track of the currently playing audio
@@ -9,6 +9,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     const fetchBeats = async () => {
         try {
             const response = await fetch('/api/beats');
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
             const beats = await response.json();
             renderBeats(beats);
         } catch (error) {
@@ -28,13 +31,13 @@ document.addEventListener('DOMContentLoaded', async () => {
             const priceInDollars = (beat.price / 100).toFixed(2);
 
             beatCard.innerHTML = `
-                <img src="${beat.imageUrl}" alt="${beat.name}" class="beat-art">
+                <img src="${beat.image_url}" alt="${beat.name}" class="beat-art">
                 <div class="beat-info">
                     <h3>${beat.name}</h3>
                     <p>${beat.genre}</p>
                 </div>
                 <div class="audio-player">
-                    <audio src="${beat.audioUrl}" preload="metadata"></audio>
+                    <audio src="${beat.audio_url}" preload="metadata"></audio>
                     <button class="play-button">Play</button>
                 </div>
                 <button class="buy-button" data-beat-id="${beat.id}" data-price="${priceInDollars}">
@@ -77,7 +80,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             }
         }
 
-       // --- Purchase Logic ---
+        // --- Purchase Logic ---
         if (event.target.classList.contains('buy-button')) {
             const beatId = event.target.dataset.beatId;
 
@@ -87,8 +90,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             // Redirect the user to the new checkout page
             window.location.href = '/checkout.html';
         }
-           
-
+    });
 
     // Initial load of beats
     fetchBeats();
