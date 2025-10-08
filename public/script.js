@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', async () => {
     // IMPORTANT: Replace with your publishable key
-    const stripe = Stripe('YOUR_STRIPE_PUBLISHABLE_KEY'); 
+    const stripe = Stripe('pk_test_51SC5QaCLs3t3rxKpc3e3CGDxjQBjPM9aj6GL8q2LOI1AJvnJOZNWgF1XVtUKWHbkloIonVogg7ehxBRtKn1GCb5o00EbDquc4N'); 
 
     const beatContainer = document.getElementById('beat-container');
     let currentAudio = null; // Keep track of the currently playing audio
@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                     <p>${beat.genre}</p>
                 </div>
                 <div class="audio-player">
-                    <audio src="${beat.audio_url}" preload="metadata"></audio>
+                    <audio src="${beat.preview_url}" preload="metadata"></audio> 
                     <button class="play-button">Play</button>
                 </div>
                 <button class="buy-button" data-beat-id="${beat.id}" data-price="${priceInDollars}">
