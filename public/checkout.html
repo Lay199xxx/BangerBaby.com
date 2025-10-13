@@ -16,14 +16,25 @@
         </div>
 
         <form id="payment-form">
-            <div id="payment-element">
-                </div>
-            <button id="submit" class="buy-button">
-                <span id="button-text">Pay now</span>
-            </button>
-            <div id="payment-message" role="alert"></div>
-        </form>
+    <div class="form-row">
+        <label for="email-input">Email for Delivery & Receipt</label>
+        <input type="email" id="email-input" placeholder="you@example.com" required>
     </div>
+    
+    <div class="terms-agreement">
+    <input type="checkbox" id="terms-checkbox">
+    <label for="terms-checkbox">
+        I have read and agree to the <a href="/licenses.html" target="_blank">license agreement</a>.
+    </label>
+    </div>
+
+    <div id="payment-element">
+        </div>
+    <button id="submit" class="buy-button">
+        <span id="button-text">Pay now</span>
+    </button>
+    <div id="payment-message" role="alert"></div>
+</form>
 
     <script src="checkout.js"></script>
 </body>
