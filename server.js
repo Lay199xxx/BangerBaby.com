@@ -92,11 +92,14 @@ app.post('/stripe-webhook', express.raw({ type: 'application/json' }), async (re
         from: '"BangerBaby" <layman.sledge@bangerbaby.com>',
         to: customerEmail,
         subject: 'Your Beat Purchase & Download Link',
-        html:`<h1>Thank you for your purchase!</h1>
+        html: `<h1>Thank you for your purchase!</h1>
        <p>You can download your beat using the secure link below. This link will expire in 24 hours.</p>
-       <p><a href="${downloadUrl}">Download ${beat.name} (WAV)</a></p>
-       <p>Your license agreement can be found here: <a href="https://www.bangerbaby.com/licenses/">License Terms</a></p>`,
-    });
+       <p><a href="${downloadUrl}" style="font-size: 18px; font-weight: bold;">Download ${beat.name} (WAV)</a></p>
+       <p style="font-size: 12px; color: #888; margin-top: 25px;">
+           Having trouble? <a href="https://bangerbaby.com/instructions/">Click here for download instructions.</a>
+       </p>
+       <hr>
+       <p>Your license agreement can be found here: <a href="https://bangerbaby.com/licenses/">License Terms</a></p>`,
 
     console.log(`Successfully sent download link for beat ${purchasedBeatId} to ${customerEmail}`);
 } catch (err) {
@@ -188,10 +191,14 @@ app.post('/fulfill-free-order', async (req, res) => {
             from: '"BangerBaby" <layman.sledge@bangerbaby.com>',
             to: email,
             subject: 'Your Free Beat Download!',
-            html: `<h1>Here is your free beat!</h1>
+           html: `<h1>Here is your free beat!</h1>
        <p>Thank you for checking out the store. You can download your beat using the secure link below. This link will expire in 24 hours.</p>
-       <p><a href="${downloadUrl}">Download ${beat.name} (WAV)</a></p>
-       <p>Your license agreement can be found here: <a href="https://www.bangerbaby.com/licenses/">License Terms</a></p>`,
+       <p><a href="${downloadUrl}" style="font-size: 18px; font-weight: bold;">Download ${beat.name} (WAV)</a></p>
+       <p style="font-size: 12px; color: #888; margin-top: 25px;">
+           Having trouble? <a href="https://bangerbaby.com/instructions/">Click here for download instructions.</a>
+       </p>
+       <hr>
+       <p>Your use of this beat is subject to our terms. The license agreement can be found here: <a href="https://bangerbaby.com/licenses/">License Terms</a></p>`,
         });
 
         res.status(200).json({ success: true });
