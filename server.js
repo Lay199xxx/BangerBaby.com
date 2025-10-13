@@ -100,7 +100,7 @@ app.post('/stripe-webhook', express.raw({ type: 'application/json' }), async (re
            Having trouble? <a href="https://bangerbaby.com/instructions/">Click here for download instructions.</a>
        </p>
        <hr>
-       <p>Your license agreement can be found here: <a href="https://bangerbaby.com/licenses/">License Terms</a></p>`,;
+       <p>Your license agreement can be found here: <a href="https://bangerbaby.com/licenses/">License Terms</a></p>`,
  });
 
             console.log(`Successfully sent download link for beat ${purchasedBeatId} to ${customerEmail}`);
