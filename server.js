@@ -101,11 +101,12 @@ app.post('/stripe-webhook', express.raw({ type: 'application/json' }), async (re
        </p>
        <hr>
        <p>Your license agreement can be found here: <a href="https://bangerbaby.com/licenses/">License Terms</a></p>`,;
+ });
 
-    console.log(`Successfully sent download link for beat ${purchasedBeatId} to ${customerEmail}`);
-} catch (err) {
-    console.error('Error during fulfillment process:', err);
-}
+            console.log(`Successfully sent download link for beat ${purchasedBeatId} to ${customerEmail}`);
+        } catch (err) {
+            console.error('Error during fulfillment process:', err);
+        }
     }
 
     res.json({ received: true });
