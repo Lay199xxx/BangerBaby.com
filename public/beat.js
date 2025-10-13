@@ -33,7 +33,7 @@ function renderBeat(beat) {
     const priceInDollars = (Number(beat.price) / 100).toFixed(2);
     
     // Update the page title
-    document.title = `${beat.name} | My Beat Store`;
+    document.title = `${beat.name} | BANGERBABY`;
 
     // Populate the main content with the beat's details
     mainContent.innerHTML = `
