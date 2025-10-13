@@ -30,20 +30,22 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             const priceInDollars = (beat.price / 100).toFixed(2);
 
-            beatCard.innerHTML = `
-                <img src="${beat.image_url}" alt="${beat.name}" class="beat-art">
-                <div class="beat-info">
-                    <h3>${beat.name}</h3>
-                    <p>${beat.genre}</p>
-                </div>
-                <div class="audio-player">
-                    <audio src="${beat.preview_url}" preload="metadata"></audio> 
-                    <button class="play-button">Play</button>
-                </div>
-                <button class="buy-button" data-beat-id="${beat.id}" data-price="${priceInDollars}">
-                    Purchase - $${priceInDollars}
-                </button>
-            `;
+           beatCard.innerHTML = `
+    <a href="/beat/${beat.id}" class="beat-card-link">
+        <img src="${beat.image_url}" alt="${beat.name}" class="beat-art">
+        <div class="beat-info">
+            <h3>${beat.name}</h3>
+            <p>${beat.genre}</p>
+        </div>
+        <div class="audio-player">
+            <audio src="${beat.preview_url}" preload="metadata"></audio>
+            <button class="play-button">Play</button>
+        </div>
+        <button class="buy-button" data-beat-id="${beat.id}" data-price="${priceInDollars}">
+            Purchase - $${priceInDollars}
+        </button>
+    </a>
+`;
 
             beatContainer.appendChild(beatCard);
         });

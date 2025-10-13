@@ -13,6 +13,7 @@ const { Pool } = require('pg');
 const { S3Client, GetObjectCommand } = require("@aws-sdk/client-s3");
 const { getSignedUrl } = require("@aws-sdk/s3-request-presigner");
 const nodemailer = require('nodemailer');
+const path = require('path');
 
 // --- INITIALIZATIONS ---
 const app = express();
@@ -119,6 +120,27 @@ app.use(express.json());
 
 
 // --- API ROUTES ---
+
+// API ROUTE: Get a SINGLE beat by its ID
+app.get('/api/beat/:id', async (req, res) => {
+    const { id } = req.params; // req.params gets the :id from the URL
+    try {
+        const result = await pool.query('SELECT * FROM beats WHERE id = $1', [id]);
+        if (result.rows.length === 0) {
+            return res.status(404).json({ error: 'Beat not found' });
+        }
+        res.json(result.rows[0]); // Send back the single beat object
+    } catch (err) {
+        console.error('Error fetching single beat:', err);
+        res.status(500).json({ error: 'Error fetching beat' });
+    }
+});
+
+// PAGE ROUTE: Serve the beat detail page for any beat ID
+app.get('/beat/:id', (req, res) => {
+    // This sends our generic beat.html template to the browser
+    res.sendFile(path.join(__dirname, 'public', 'beat.html'));
+});
 
 // Get all beats for the store page
 app.get('/api/beats', async (req, res) => {
