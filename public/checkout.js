@@ -1,4 +1,4 @@
-const stripe = Stripe('pk_test_51SC5QkC48JAKzKxdO5kYicSd2LSbaResAEUK5vptCgpdBHSoCvzfbqLveh6ck0aUsRDPPZlPkLw001jwJSXbTA8H00gBnpPoqI');
+const stripe = Stripe('pk_live_51SC5QaCLs3t3rxKpDlVEuweUTyUkX6aDlegz31itcoM8EqhYd57EIEHiUORBaa48vTvUtP7Dtc6wPSnwn2Gn2gV600kiy58f7h);
 let elements;
 const paymentForm = document.getElementById('payment-form');
 const orderSummaryEl = document.getElementById('order-summary');

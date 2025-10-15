@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', async () => {
     // IMPORTANT: Replace with your publishable key
-    const stripe = Stripe('pk_test_51SC5QkC48JAKzKxdO5kYicSd2LSbaResAEUK5vptCgpdBHSoCvzfbqLveh6ck0aUsRDPPZlPkLw001jwJSXbTA8H00gBnpPoqI'); 
+    const stripe = Stripe('pk_live_51SC5QaCLs3t3rxKpDlVEuweUTyUkX6aDlegz31itcoM8EqhYd57EIEHiUORBaa48vTvUtP7Dtc6wPSnwn2Gn2gV600kiy58f7h'); 
 
     const beatContainer = document.getElementById('beat-container');
     let currentAudio = null; // Keep track of the currently playing audio
