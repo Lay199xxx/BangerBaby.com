@@ -1,4 +1,4 @@
-const stripe = Stripe('pk_live_51SC5QaCLs3t3rxKpDlVEuweUTyUkX6aDlegz31itcoM8EqhYd57EIEHiUORBaa48vTvUtP7Dtc6wPSnwn2Gn2gV600kiy58f7h);
+const stripe = Stripe('pk_live_51SC5QaCLs3t3rxKpDlVEuweUTyUkX6aDlegz31itcoM8EqhYd57EIEHiUORBaa48vTvUtP7Dtc6wPSnwn2Gn2gV600kiy58f7h'); // <-- PASTE YOUR LIVE KEY HERE
 let elements;
 const paymentForm = document.getElementById('payment-form');
 const orderSummaryEl = document.getElementById('order-summary');
@@ -16,7 +16,6 @@ async function initialize() {
     }
 
     const beat = await getBeatDetails(selectedBeatId);
-    console.log('Checking beat details:', beat);
     if (!beat) {
         orderSummaryEl.innerHTML = '<h2>Error: Beat details could not be found.</h2>';
         paymentForm.style.display = 'none';
@@ -25,8 +24,6 @@ async function initialize() {
 
     displayOrderSummary(beat);
 
-    // --- ROBUST PRICE CHECK ---
-    // We use Number() to ensure the price is not a string
     if (Number(beat.price) > 0) {
         const response = await fetch('/create-payment-intent', {
             method: 'POST',
@@ -57,8 +54,8 @@ async function handlePaidSubmit(e) {
     const checkbox = document.getElementById('terms-checkbox');
     if (!checkbox.checked) {
         showMessage("You must agree to the license agreement to proceed.");
-        setLoading(false); // Re-enable the button
-        return; // Stop the function
+        setLoading(false);
+        return;
     }
 
     const email = document.getElementById('email-input').value;
@@ -68,7 +65,6 @@ async function handlePaidSubmit(e) {
         return;
     }
 
-    // ... (rest of the function is the same)
     const { error } = await stripe.confirmPayment({
         elements,
         confirmParams: {
@@ -95,10 +91,10 @@ function setupFreeCheckout() {
         const checkbox = document.getElementById('terms-checkbox');
         if (!checkbox.checked) {
             showMessage("You must agree to the license agreement to proceed.");
-            setLoading(false); // Re-enable the button
-            return; // Stop the function
+            setLoading(false);
+            return;
         }
-
+        
         const email = document.getElementById('email-input').value;
         if (!email) {
             showMessage("Please enter your email to receive the download link.");
