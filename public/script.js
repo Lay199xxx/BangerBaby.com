@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             <p>${beat.genre}</p>
         </div>
         <div class="audio-player">
-            <audio src="${beat.preview_url}" preload="metadata"></audio>
+            <audio src="${beat.preview_url}" preload="none"></audio>
             <button class="play-button">Play</button>
         </div>
         <button class="buy-button" data-beat-id="${beat.id}" data-price="${priceInDollars}">

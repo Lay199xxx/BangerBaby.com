@@ -42,7 +42,7 @@ function renderBeat(beat) {
             <div class="detail-info">
                 <h1>${beat.name}</h1>
                 <p class="genre">${beat.genre}</p>
-                <audio controls src="${beat.preview_url}"></audio>
+                <audio controls src="${beat.preview_url}" preload="none"></audio>
                 <p class="price">$${priceInDollars}</p>
                 <a href="#" id="purchase-btn" class="purchase-button">Purchase</a>
             </div>
